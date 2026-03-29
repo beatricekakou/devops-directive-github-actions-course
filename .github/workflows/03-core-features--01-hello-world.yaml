@@ -25,9 +25,9 @@ jobs:
 
     steps:
       - name: stag-step-1
-        run: 'echo "Hello from stag: ${{secrets.test_secret}} "'
+        run: 'echo "Hello from staging: ${{secrets.test_secret}} "'
       - name: stag-step-2
-        run: 'echo "Hello from stag: $MY_VAR"'
+        run: 'echo "Hello from staging: $MY_VAR"'
         
     
       
