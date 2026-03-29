@@ -10,11 +10,11 @@ jobs:
     env:
         MY_SECRET: ${{secrets.test_secret}}
     steps:
-      - run: 'echo "Hello from production: $MY_SECRET"'     
+      - run: 'echo "Hello from production: $MY_SECRET"'   
   staging_job:
     environment: staging
     runs-on: ubuntu-22.04
     env:
         MY_SECRET: ${{secrets.test_secret}}
     steps:
-      - run: echo "Hello from staging $MY_SECRET"
+      - run: 'echo "Hello from staging $MY_SECRET"'
