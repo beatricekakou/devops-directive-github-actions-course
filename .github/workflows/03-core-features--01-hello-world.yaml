@@ -1,10 +1,20 @@
 name: Hello World
 
 on:
-  workflow_dispatch:
+  [push]
 
 jobs:
-  say-hello-inline-bash:
+  prod_job:
+    environment: production
     runs-on: ubuntu-24.04
+    env:
+        MY_SECRET: ${{secrets.test_secret}}
     steps:
-      - run: echo "Hello from an inline bash script in a GitHub Action Workflow!"
+      - run: 'echo "Hello from production: $MY_SECRET"'     
+  staging_job:
+    environment: staging
+    runs-on: ubuntu-22.04
+    env:
+        MY_SECRET: ${{secrets.test_secret}}
+    steps:
+      - run: echo "Hello from staging $MY_SECRET"
