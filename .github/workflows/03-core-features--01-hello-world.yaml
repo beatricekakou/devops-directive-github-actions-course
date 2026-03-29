@@ -9,12 +9,24 @@ jobs:
     runs-on: ubuntu-24.04
     env:
         MY_SECRET: ${{secrets.test_secret}}
+        MY_VAR: ${{vars.env_variable}}
     steps:
-      - run: 'echo "Hello from production: $MY_SECRET"'   
+      - name: prod-step-1
+        run: 'echo "Hello from staging: ${{secrets.test_secret}} "'
+      - name: prod-step-2
+        run: 'echo "Hello from staging: $MY_VAR"'
+        
   staging_job:
     environment: staging
     runs-on: ubuntu-24.04
     env:
         MY_SECRET: ${{secrets.test_secret}}
+        MY_VAR: ${{vars.ENV_VARIABLE}}
+
     steps:
-      - run: 'echo "Hello from staging: $MY_SECRET"'
+      - name: staging-step-1
+        run: 'echo "Hello from staging: ${{secrets.test_secret}} "'
+      - name: staging-step-2
+        run: 'echo "Hello from staging: $MY_VAR"'
+    
+      
