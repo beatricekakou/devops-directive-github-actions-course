@@ -12,9 +12,9 @@ jobs:
         MY_VAR: ${{vars.env_variable}}
     steps:
       - name: prod-step-1
-        run: 'echo "Hello from staging: ${{secrets.test_secret}} "'
+        run: 'echo "Hello from prod: ${{secrets.test_secret}} "'
       - name: prod-step-2
-        run: 'echo "Hello from staging: $MY_VAR"'
+        run: 'echo "Hello from prod: $MY_VAR"'
         
   staging_job:
     environment: staging
@@ -24,9 +24,10 @@ jobs:
         MY_VAR: ${{vars.ENV_VARIABLE}}
 
     steps:
-      - name: staging-step-1
-        run: 'echo "Hello from staging: ${{secrets.test_secret}} "'
-      - name: staging-step-2
-        run: 'echo "Hello from staging: $MY_VAR"'
+      - name: stag-step-1
+        run: 'echo "Hello from stag: ${{secrets.test_secret}} "'
+      - name: stag-step-2
+        run: 'echo "Hello from stag: $MY_VAR"'
+        
     
       
